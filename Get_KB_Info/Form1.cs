@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Microsoft.Toolkit.Forms.UI.Controls;
 using Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT;
 using AngleSharp.Html.Parser;
+using AngleSharp.Dom;
 
 namespace Get_KB_Info
 {
@@ -118,23 +119,22 @@ namespace Get_KB_Info
                     await Task.Delay(1000);
                 }
 
-                if (webView1.DocumentTitle.IndexOf("Microsoft Support") >= 0 || webView1.DocumentTitle.IndexOf("Microsoft サポート") >= 0)
+                if (webView1.DocumentTitle.IndexOf("Sorry") >= 0 || webView1.DocumentTitle.IndexOf("申し訳ございません") >= 0)
                     dataGridView1.Rows[TargetList[iLoop].iIndex].Cells[2].Value = "404 Not Found";
                 else
                 {
                     dataGridView1.Rows[TargetList[iLoop].iIndex].Cells[2].Value = webView1.DocumentTitle;
-
                     webView1.IsScriptNotifyAllowed = true;
-                    string html = webView1.InvokeScript("eval", new string[] { "document.documentElement.innerHTML;" });
+                    string html = webView1.InvokeScript("eval", new string[] { "document.documentElement.outerHTML;" });
 
                     var parser = new HtmlParser();
                     var doc = parser.ParseDocument(html);
-                    var LastUpdate = doc.GetElementsByClassName("article-last-updated");
+                    var LastUpdate = doc.GetElementsByName("lastPublishedDate");
                     foreach (var element in LastUpdate)
                     {
-                        dataGridView1.Rows[TargetList[iLoop].iIndex].Cells[3].Value = element.Attributes["datetime"].Value;
+                        dataGridView1.Rows[TargetList[iLoop].iIndex].Cells[3].Value = element.Attributes["content"].Value;
                     }
-                    var Product = doc.GetElementsByName("ms.productNames");
+                    var Product = doc.GetElementsByName("ms.productName");
                     foreach (var element in Product)
                     {
                         dataGridView1.Rows[TargetList[iLoop].iIndex].Cells[4].Value = element.Attributes["content"].Value;

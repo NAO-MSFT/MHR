@@ -30,15 +30,15 @@
         {
             this.webView1 = new Microsoft.Toolkit.Forms.UI.Controls.WebView();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.txtTBURL = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
             this.clmLoad = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.clmURL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmAppliesTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmOS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.txtTBURL = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.webView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -64,6 +64,40 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(805, 323);
             this.dataGridView1.TabIndex = 4;
+            // 
+            // clmLoad
+            // 
+            this.clmLoad.HeaderText = "";
+            this.clmLoad.Name = "clmLoad";
+            this.clmLoad.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.clmLoad.Width = 30;
+            // 
+            // clmURL
+            // 
+            this.clmURL.HeaderText = "URL";
+            this.clmURL.Name = "clmURL";
+            this.clmURL.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.clmURL.Width = 250;
+            // 
+            // clmTitle
+            // 
+            this.clmTitle.HeaderText = "Web Page Title";
+            this.clmTitle.Name = "clmTitle";
+            this.clmTitle.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.clmTitle.Width = 250;
+            // 
+            // clmAppliesTo
+            // 
+            this.clmAppliesTo.HeaderText = "Last Updated";
+            this.clmAppliesTo.Name = "clmAppliesTo";
+            this.clmAppliesTo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.clmAppliesTo.Width = 80;
+            // 
+            // clmOS
+            // 
+            this.clmOS.HeaderText = "Applies to";
+            this.clmOS.Name = "clmOS";
+            this.clmOS.Width = 170;
             // 
             // button1
             // 
@@ -102,40 +136,6 @@
             this.button3.Text = "Stop";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // clmLoad
-            // 
-            this.clmLoad.HeaderText = "";
-            this.clmLoad.Name = "clmLoad";
-            this.clmLoad.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.clmLoad.Width = 30;
-            // 
-            // clmURL
-            // 
-            this.clmURL.HeaderText = "URL";
-            this.clmURL.Name = "clmURL";
-            this.clmURL.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.clmURL.Width = 250;
-            // 
-            // clmTitle
-            // 
-            this.clmTitle.HeaderText = "Web Page Title";
-            this.clmTitle.Name = "clmTitle";
-            this.clmTitle.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.clmTitle.Width = 250;
-            // 
-            // clmAppliesTo
-            // 
-            this.clmAppliesTo.HeaderText = "Last Updated";
-            this.clmAppliesTo.Name = "clmAppliesTo";
-            this.clmAppliesTo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.clmAppliesTo.Width = 80;
-            // 
-            // clmOS
-            // 
-            this.clmOS.HeaderText = "Applies to";
-            this.clmOS.Name = "clmOS";
-            this.clmOS.Width = 170;
             // 
             // Form1
             // 
