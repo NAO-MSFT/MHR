@@ -119,8 +119,9 @@ namespace Get_KB_Info
                     await Task.Delay(1000);
                 }
 
-                if (webView1.DocumentTitle.IndexOf("Sorry") >= 0 || webView1.DocumentTitle.IndexOf("申し訳ございません") >= 0)
-                    dataGridView1.Rows[TargetList[iLoop].iIndex].Cells[2].Value = "404 Not Found";
+//                if (webView1.DocumentTitle.IndexOf("Sorry") >= 0 || webView1.DocumentTitle.IndexOf("申し訳ございません") >= 0)
+                  if (webView1.DocumentTitle.IndexOf("Microsoft.AspNetCore.Mvc.Localization.LocalizedHtmlString") >= 0)
+                        dataGridView1.Rows[TargetList[iLoop].iIndex].Cells[2].Value = "404 Not Found";
                 else
                 {
                     dataGridView1.Rows[TargetList[iLoop].iIndex].Cells[2].Value = webView1.DocumentTitle;
