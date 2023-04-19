@@ -1,4 +1,8 @@
 {
-  "ExpandedNodes": [],
+  "ExpandedNodes": [
+    "",
+    "\\Get_KB_Info"
+  ],
+  "SelectedNode": "\\Get_KB_Info\\Form1.cs",
   "PreviewInSolutionExplorer": false
 }

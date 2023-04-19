@@ -119,26 +119,37 @@ namespace Get_KB_Info
                     await Task.Delay(1000);
                 }
 
-//                if (webView1.DocumentTitle.IndexOf("Sorry") >= 0 || webView1.DocumentTitle.IndexOf("申し訳ございません") >= 0)
-                  if (webView1.DocumentTitle.IndexOf("Microsoft.AspNetCore.Mvc.Localization.LocalizedHtmlString") >= 0)
-                        dataGridView1.Rows[TargetList[iLoop].iIndex].Cells[2].Value = "404 Not Found";
+                if (webView1.DocumentTitle.IndexOf("Error - Office.com - Microsoft Support") >= 0 || webView1.DocumentTitle.IndexOf("エラー - Office.com - Microsoft サポート") >= 0)
+                // if (webView1.DocumentTitle.IndexOf("Microsoft.AspNetCore.Mvc.Localization.LocalizedHtmlString") >= 0)
+                {
+                    dataGridView1.Rows[TargetList[iLoop].iIndex].Cells[2].Value = "404 Not Found";
+                }
                 else
                 {
-                    dataGridView1.Rows[TargetList[iLoop].iIndex].Cells[2].Value = webView1.DocumentTitle;
                     webView1.IsScriptNotifyAllowed = true;
                     string html = webView1.InvokeScript("eval", new string[] { "document.documentElement.outerHTML;" });
 
                     var parser = new HtmlParser();
                     var doc = parser.ParseDocument(html);
+                    var classpList = doc.GetElementsByClassName("ocpArticleTitleSection");
+                    foreach (var c in classpList)
+                    {
+                        dataGridView1.Rows[TargetList[iLoop].iIndex].Cells[2].Value = c.TextContent.Replace("\t", "").Replace("\n", "").Trim();
+                    }
+                    var FirstDate = doc.GetElementsByName("firstPublishedDate");
+                    foreach (var element in FirstDate)
+                    {
+                        dataGridView1.Rows[TargetList[iLoop].iIndex].Cells[3].Value = element.Attributes["content"].Value;
+                    }
                     var LastUpdate = doc.GetElementsByName("lastPublishedDate");
                     foreach (var element in LastUpdate)
                     {
-                        dataGridView1.Rows[TargetList[iLoop].iIndex].Cells[3].Value = element.Attributes["content"].Value;
+                        dataGridView1.Rows[TargetList[iLoop].iIndex].Cells[4].Value = element.Attributes["content"].Value;
                     }
                     var Product = doc.GetElementsByName("ms.productName");
                     foreach (var element in Product)
                     {
-                        dataGridView1.Rows[TargetList[iLoop].iIndex].Cells[4].Value = element.Attributes["content"].Value;
+                        dataGridView1.Rows[TargetList[iLoop].iIndex].Cells[5].Value = element.Attributes["content"].Value;
                     }
                 }
 
